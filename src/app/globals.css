@@ -1,1 +1,21 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@keyframes icon-flow {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-icon-flow {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.1);
+  animation: icon-flow linear infinite;
+}

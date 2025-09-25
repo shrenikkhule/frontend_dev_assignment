@@ -34,19 +34,19 @@ export default function Navbar() {
 
         {/* Center: Navigation Buttons */}
         <div className="hidden md:flex space-x-6">
-          <Link href="/find-players">
+          <Link href="/">
             <span className="hover:text-green-300 font-medium flex items-center gap-1 transition">
               <FaUsers className="text-base text-green-400" />
               <span>Home</span>
             </span>
           </Link>
-          <Link href="/book-venues">
+          <Link href="/our-workers">
             <span className="hover:text-yellow-300 font-medium flex items-center gap-1 transition">
               <FaCalendarCheck className="text-base text-yellow-400" />
               <span>Our Workers</span>
             </span>
           </Link>
-          <Link href="/trainer">
+          <Link href="/about-us">
             <span className="hover:text-orange-300 font-medium flex items-center gap-1 transition">
               <FaLaptopHouse className="text-base text-orange-400" />
               <span>About Us</span>
@@ -67,8 +67,8 @@ export default function Navbar() {
               className="w-6 h-6 rounded-full mr-2"
             >
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhjk7qpl0JIoUsadWQz2lyutltpEKFacR_bQ&s"
-                className="rounded-2xl"
+                src="https://cdn-icons-png.flaticon.com/512/8308/8308942.png"
+                className="rounded-3xl"
                 alt="login"
               />
             </motion.div>

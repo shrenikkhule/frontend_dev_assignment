@@ -26,7 +26,8 @@ export default function Footer() {
               </h2>
             </div>
             <p className="text-gray-300 mb-6">
-              Find the Right Spot, Meet Your Match, Play Your Game.
+              We believe in collaboration and innovation. imagine what we can
+              achieve together at Solve Ease!
             </p>
 
             {/* Static Social Media Icons */}
@@ -145,7 +146,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} TecSolix. All rights reserved.
+            &copy; {new Date().getFullYear()} SolveEase. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
             <a href="#" className="text-gray-400 hover:text-white">
