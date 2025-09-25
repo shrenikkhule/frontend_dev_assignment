@@ -10,8 +10,19 @@ import {
   FaWrench,
   FaUserShield,
 } from "react-icons/fa";
-
+import { useEffect, useState } from "react";
+import { WorkerType } from "@/types/workers";
+import Image from "next/image";
 export default function HomePage() {
+  const [workers, setWorkers] = useState<WorkerType[]>([]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      const response = await import("../../workers.json");
+      setWorkers(response.default.slice(0, 8)); // show first 8 workers
+    };
+    loadData();
+  }, []);
   return (
     <main className="bg-white text-gray-800">
       {/* 1. Hero Section: Unique, Interactive, and Animated */}
@@ -79,40 +90,42 @@ export default function HomePage() {
 
           {/* Right Column: Interactive Floating Cards */}
           <div className="relative h-64 md:h-full hidden md:block">
-            <FloatingCard
-              icon={<FaTools />}
-              text="Plumber"
-              className="top-1/4 left-10"
-              duration={10}
-            />
-            <FloatingCard
-              icon={<FaBolt />}
-              text="Electrician"
-              className="top-10 right-10"
-              duration={12}
-              delay={-2}
-            />
-            <FloatingCard
-              icon={<FaPaintRoller />}
-              text="Painter"
-              className="bottom-1/4 right-20"
-              duration={11}
-              delay={-5}
-            />
-            <FloatingCard
-              icon={<FaBroom />}
-              text="Cleaner"
-              className="bottom-10 left-20"
-              duration={13}
-              delay={-3}
-            />
-            <FloatingCard
-              icon={<FaWrench />}
-              text="Mechanic"
-              className="top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
-              duration={9}
-              delay={-4}
-            />
+            <Link href="/our-workers">
+              <FloatingCard
+                icon={<FaTools />}
+                text="Plumber"
+                className="top-1/4 left-10"
+                duration={10}
+              />
+              <FloatingCard
+                icon={<FaBolt />}
+                text="Electrician"
+                className="top-10 right-10"
+                duration={12}
+                delay={-2}
+              />
+              <FloatingCard
+                icon={<FaPaintRoller />}
+                text="Painter"
+                className="bottom-1/4 right-20"
+                duration={11}
+                delay={-5}
+              />
+              <FloatingCard
+                icon={<FaBroom />}
+                text="Cleaner"
+                className="bottom-10 left-20"
+                duration={13}
+                delay={-3}
+              />
+              <FloatingCard
+                icon={<FaWrench />}
+                text="Mechanic"
+                className="top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
+                duration={9}
+                delay={-4}
+              />
+            </Link>
           </div>
         </div>
       </section>
@@ -134,7 +147,54 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      {/*  */}
+      <section className="px-6 py-10">
+        {/* Header Row */}
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold text-gray-800">
+            Our Professionals
+          </h2>
+          <Link href="/our-workers">
+            <button className="text-indigo-600 font-semibold hover:text-indigo-800 transition cursor-pointer">
+              View All →
+            </button>
+          </Link>
+        </div>
 
+        {/* 🔹 Horizontal Scroll Cards */}
+        <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+          {workers.map((worker) => (
+            <div
+              key={worker.id}
+              className="min-w-[260px] bg-white rounded-xl shadow-md border border-gray-200 
+                   hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              {/* Image */}
+              <div className="w-full h-40 relative">
+                <Image
+                  src={worker.image}
+                  alt={worker.name}
+                  fill
+                  className="object-cover rounded-t-xl"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-4">
+                <h3 className="font-bold text-gray-900">{worker.name}</h3>
+                <p className="text-indigo-600 text-sm font-medium">
+                  {worker.service}
+                </p>
+                <p className="mt-2 text-gray-700 font-semibold">
+                  ₹{worker.pricePerDay}{" "}
+                  <span className="text-sm text-gray-500">/day</span>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      {/*  */}
       {/* 3. Why Choose Us Section */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
